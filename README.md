@@ -140,20 +140,20 @@ See `.env.example` for required environment variables and the `docker-compose.ym
 
 ## Deploy on Railway
 
-Create three Railway services from this GitHub repository:
+Create two Railway services from this GitHub repository and use MongoDB Atlas for the database:
 
-1. MongoDB database service.
-2. Backend service with root directory `backend`.
-3. Frontend service with root directory `frontend`.
+1. Backend service with root directory `backend`.
+2. Frontend service with root directory `frontend`.
 
 Backend variables:
 
 ```bash
-MONGO_URI=${{MongoDB.MONGO_URL}}
+MONGO_URI=mongodb+srv://USERNAME:PASSWORD@CLUSTER.xxxxx.mongodb.net/resumeiq?retryWrites=true&w=majority
 JWT_SECRET=replace-with-a-long-random-secret
 JWT_EXPIRES_IN=7d
 BACKEND_URL=https://your-backend-service.up.railway.app
 PORT=5000
+REQUIRE_EMAIL_VERIFICATION=false
 ```
 
 Frontend variables:
