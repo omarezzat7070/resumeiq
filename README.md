@@ -138,6 +138,33 @@ The recent updates include:
 
 See `.env.example` for required environment variables and the `docker-compose.yml` for a local start.
 
+## Deploy on Railway
+
+Create three Railway services from this GitHub repository:
+
+1. MongoDB database service.
+2. Backend service with root directory `backend`.
+3. Frontend service with root directory `frontend`.
+
+Backend variables:
+
+```bash
+MONGO_URI=${{MongoDB.MONGO_URL}}
+JWT_SECRET=replace-with-a-long-random-secret
+JWT_EXPIRES_IN=7d
+BACKEND_URL=https://your-backend-service.up.railway.app
+PORT=5000
+```
+
+Frontend variables:
+
+```bash
+VITE_API_URL=https://your-backend-service.up.railway.app/api
+```
+
+After Railway gives the backend a public domain, update `BACKEND_URL` and the frontend
+`VITE_API_URL`, then redeploy the frontend.
+
 ---
 
 ## License
