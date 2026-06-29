@@ -145,6 +145,9 @@ Create two Railway services from this GitHub repository and use MongoDB Atlas fo
 1. Backend service with root directory `backend`.
 2. Frontend service with root directory `frontend`.
 
+Do not use `start.sh` as a Railway start command. Each service should use its own
+package scripts from its root directory.
+
 Backend variables:
 
 ```bash
