@@ -32,7 +32,7 @@ const Dashboard = () => {
     <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold">Dashboard</h1>
-        <Link to="/upload" className="bg-primary text-white px-4 py-2 rounded-lg">
+        <Link to="/upload" className="bg-primary text-white px-4 py-2 rounded-lg shadow-sm hover:bg-primaryDark">
           + New Analysis
         </Link>
       </div>
@@ -45,9 +45,9 @@ const Dashboard = () => {
       </div>
 
       <h2 className="text-xl font-semibold mb-4">Recent Analyses</h2>
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-parchment border border-stone-200 rounded-xl shadow-sm overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-gray-100 text-sm text-gray-600">
+          <thead className="bg-stone-100 text-sm text-taupe">
             <tr>
               <th className="p-3">Resume</th>
               <th className="p-3">Job Title</th>
@@ -58,13 +58,13 @@ const Dashboard = () => {
           <tbody>
             {analyses.length === 0 && (
               <tr>
-                <td colSpan="4" className="p-4 text-center text-gray-500">
+                <td colSpan="4" className="p-4 text-center text-taupe">
                   No analyses yet. Upload a resume to get started.
                 </td>
               </tr>
             )}
             {analyses.map((a) => (
-              <tr key={a._id} className="border-t hover:bg-gray-50">
+              <tr key={a._id} className="border-t border-stone-200 hover:bg-cream">
                 <td className="p-3">
                   <Link to={`/analysis/${a._id}`} className="text-primary">
                     {a.resumeId?.originalFileName || 'Resume'}

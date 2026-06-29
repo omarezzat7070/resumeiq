@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream text-cocoa antialiased;
+  }
+
+  input,
+  textarea {
+    @apply bg-parchment border-stone-300 text-cocoa placeholder:text-taupe focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25;
+  }
+}

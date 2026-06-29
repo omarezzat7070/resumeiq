@@ -165,18 +165,18 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
+    <div className="flex flex-col h-screen bg-cream">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4 shadow-sm">
-        <h1 className="text-2xl font-bold text-gray-800">AI CV Assistant</h1>
-        <p className="text-sm text-gray-600 mt-1">Create, improve, and optimize your resume with AI</p>
+      <div className="bg-parchment border-b border-stone-200 px-6 py-4 shadow-sm">
+        <h1 className="text-2xl font-bold text-cocoa">AI CV Assistant</h1>
+        <p className="text-sm text-taupe mt-1">Create, improve, and optimize your resume with AI</p>
       </div>
 
       {/* Messages Container */}
       <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
         {messages.map((msg, index) => (
           <div key={`${msg.id}-${index}`} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-md ${msg.sender === 'user' ? 'bg-primary text-white' : 'bg-white border border-gray-200'} rounded-lg px-4 py-3 shadow-sm`}>
+            <div className={`max-w-md ${msg.sender === 'user' ? 'bg-primary text-white' : 'bg-parchment border border-stone-200 text-cocoa'} rounded-lg px-4 py-3 shadow-sm`}>
               <p className="whitespace-pre-wrap text-sm">{msg.text}</p>
               
               {msg.actions && msg.actions.length > 0 && (
@@ -198,7 +198,7 @@ const ChatBot = () => {
                       className={`w-full text-xs font-medium py-2 px-3 rounded transition ${
                         msg.sender === 'user'
                           ? 'bg-opacity-20 bg-white text-white hover:bg-opacity-30'
-                          : 'bg-primary text-white hover:bg-opacity-90'
+                          : 'bg-primary text-white hover:bg-primaryDark'
                       }`}
                     >
                       {action.label}
@@ -211,11 +211,11 @@ const ChatBot = () => {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-white border border-gray-200 rounded-lg px-4 py-3">
+            <div className="bg-parchment border border-stone-200 rounded-lg px-4 py-3">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                <div className="w-2 h-2 bg-taupe rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-taupe rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-taupe rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@ const ChatBot = () => {
       </div>
 
       {/* Input Area */}
-      <div className="bg-white border-t border-gray-200 px-6 py-4 shadow-lg">
+      <div className="bg-parchment border-t border-stone-200 px-6 py-4 shadow-lg">
         <form onSubmit={handleSendMessage} className="flex gap-3">
           {currentStep.includes('improve') && (
             <label className="cursor-pointer">
@@ -234,7 +234,7 @@ const ChatBot = () => {
                 onChange={handleUploadCV}
                 className="hidden"
               />
-              <div className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium text-gray-700 transition">
+              <div className="px-4 py-2 bg-stone-100 hover:bg-stone-200 rounded-lg text-sm font-medium text-cocoa transition">
                 Attach CV
               </div>
             </label>
@@ -244,18 +244,18 @@ const ChatBot = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message or details..."
-            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="flex-1 border rounded-lg px-4 py-2"
             disabled={loading}
           />
           <button
             type="submit"
             disabled={loading || !input.trim()}
-            className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition"
+            className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primaryDark disabled:opacity-50 disabled:cursor-not-allowed transition"
           >
             Send
           </button>
         </form>
-        <p className="text-xs text-gray-500 mt-2">Tip: Be detailed with your information for better CV generation.</p>
+        <p className="text-xs text-taupe mt-2">Tip: Be detailed with your information for better CV generation.</p>
       </div>
     </div>
   );

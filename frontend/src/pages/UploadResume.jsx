@@ -58,7 +58,7 @@ const UploadResume = () => {
     <div className="max-w-2xl mx-auto px-4 py-10">
       <h1 className="text-2xl font-bold mb-6">Analyze Your Resume</h1>
       {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
-      <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="bg-parchment border border-stone-200 rounded-xl shadow-sm p-6 flex flex-col gap-4">
         <div>
           <label className="block text-sm font-medium mb-1">Resume File (PDF or DOCX)</label>
           <input
@@ -90,11 +90,11 @@ const UploadResume = () => {
             required
           />
           <div className="mt-2 flex gap-2">
-            <button type="button" onClick={handleExtractSkills} className="bg-gray-200 px-3 py-1 rounded">Extract Skills</button>
-            <span className="text-sm text-gray-500">Use AI to extract required and nice-to-have skills</span>
+            <button type="button" onClick={handleExtractSkills} className="bg-stone-200 text-cocoa px-3 py-1 rounded hover:bg-stone-300">Extract Skills</button>
+            <span className="text-sm text-taupe">Use AI to extract required and nice-to-have skills</span>
           </div>
           {skills && (
-            <div className="mt-3 bg-gray-50 p-3 rounded">
+            <div className="mt-3 bg-cream border border-stone-200 p-3 rounded">
               <div>
                 <strong>Required Skills:</strong>
                 <div className="text-sm mt-1">{(skills.requiredSkills || []).join(', ') || '—'}</div>
@@ -109,7 +109,7 @@ const UploadResume = () => {
         <button
           type="submit"
           disabled={loading}
-          className="bg-primary text-white py-2 rounded-lg font-medium disabled:opacity-60"
+          className="bg-primary text-white py-2 rounded-lg font-medium hover:bg-primaryDark disabled:opacity-60"
         >
           {loading ? 'Analyzing...' : 'Analyze Resume'}
         </button>

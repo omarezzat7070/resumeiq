@@ -11,38 +11,38 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-parchment/95 border-b border-stone-200 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold text-primary">
+        <Link to="/" className="text-xl font-bold text-primaryDark">
           ResumeIQ
         </Link>
         <div className="flex gap-4 items-center">
           {user ? (
             <>
-              <Link to="/dashboard" className="text-gray-700 hover:text-primary">
+              <Link to="/dashboard" className="text-taupe hover:text-primaryDark">
                 Dashboard
               </Link>
               {user?.role === 'admin' && (
-                <Link to="/admin" className="text-gray-700 hover:text-primary">
+                <Link to="/admin" className="text-taupe hover:text-primaryDark">
                   Admin
                 </Link>
               )}
-              <Link to="/chatbot" className="text-gray-700 hover:text-primary">
+              <Link to="/chatbot" className="text-taupe hover:text-primaryDark">
                 AI ChatBot
               </Link>
-              <Link to="/upload" className="text-gray-700 hover:text-primary">
+              <Link to="/upload" className="text-taupe hover:text-primaryDark">
                 Analyze Resume
               </Link>
-              <button onClick={handleLogout} className="text-gray-700 hover:text-primary">
+              <button onClick={handleLogout} className="text-taupe hover:text-primaryDark">
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="text-gray-700 hover:text-primary">
+              <Link to="/login" className="text-taupe hover:text-primaryDark">
                 Login
               </Link>
-              <Link to="/register" className="bg-primary text-white px-4 py-2 rounded-lg">
+              <Link to="/register" className="bg-primary text-white px-4 py-2 rounded-lg shadow-sm hover:bg-primaryDark">
                 Get Started
               </Link>
             </>

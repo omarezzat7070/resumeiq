@@ -26,12 +26,12 @@ const ResumeHistory = () => {
     <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Resume History</h1>
-        <Link to="/upload" className="bg-primary text-white px-4 py-2 rounded-lg">Upload New</Link>
+        <Link to="/upload" className="bg-primary text-white px-4 py-2 rounded-lg shadow-sm hover:bg-primaryDark">Upload New</Link>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-parchment border border-stone-200 rounded-xl shadow-sm overflow-hidden">
         <table className="w-full text-left">
-          <thead className="bg-gray-100 text-sm text-gray-600">
+          <thead className="bg-stone-100 text-sm text-taupe">
             <tr>
               <th className="p-3">File</th>
               <th className="p-3">Type</th>
@@ -42,17 +42,17 @@ const ResumeHistory = () => {
           <tbody>
             {resumes.length === 0 && (
               <tr>
-                <td colSpan="4" className="p-4 text-center text-gray-500">No resumes uploaded yet.</td>
+                <td colSpan="4" className="p-4 text-center text-taupe">No resumes uploaded yet.</td>
               </tr>
             )}
             {resumes.map((r) => (
-              <tr key={r._id} className="border-t hover:bg-gray-50">
+              <tr key={r._id} className="border-t border-stone-200 hover:bg-cream">
                 <td className="p-3">{r.originalFileName}</td>
                 <td className="p-3">{r.fileType}</td>
                 <td className="p-3">{new Date(r.createdAt).toLocaleString()}</td>
                 <td className="p-3">
                   <a href={r.fileUrl} target="_blank" rel="noreferrer" className="text-primary mr-3">View</a>
-                  <Link to={`/upload`} className="text-gray-700">Analyze</Link>
+                  <Link to={`/upload`} className="text-taupe hover:text-primaryDark">Analyze</Link>
                 </td>
               </tr>
             ))}
