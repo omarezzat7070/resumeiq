@@ -122,7 +122,7 @@ Open `http://localhost:5173` in your browser.
 - Email verification & password reset
 - "Improve My Resume" rewrite mode (regenerate full sections)
 - Job description analyzer (required vs nice-to-have skills)
-- Cloud storage (S3/Cloudinary) for uploaded files
+- Optional cloud storage for uploaded files
 - Swagger/OpenAPI documentation
 - Docker Compose for one-command setup
 
@@ -130,7 +130,7 @@ Open `http://localhost:5173` in your browser.
 
 The recent updates include:
 
-- Google Cloud Storage (optional) support for resume uploads (set `GCS_BUCKET_NAME` and credentials).
+- Local resume upload storage under `backend/uploads`, so no paid cloud bucket is required.
 - OpenAI integration and AI usage tracking (set `OPENAI_API_KEY`).
 - Email verification flow using SMTP or Ethereal for local testing.
 - Admin dashboard and Resume History UI in the frontend.

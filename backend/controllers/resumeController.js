@@ -1,8 +1,6 @@
 import path from 'path';
-import fs from 'fs';
 import Resume from '../models/Resume.js';
 import { extractTextFromFile } from '../services/resumeParser.js';
-import { uploadFileToGCS } from '../services/gcsService.js';
 
 // POST /api/resumes  (multipart/form-data, field name: "resume")
 export const uploadResume = async (req, res, next) => {
@@ -13,20 +11,7 @@ export const uploadResume = async (req, res, next) => {
 
     const ext = path.extname(req.file.originalname).toLowerCase().replace('.', '');
     const extractedText = await extractTextFromFile(req.file.path);
-
-    let fileUrl = `/uploads/${req.file.filename}`;
-
-    // If GCS configured, upload file and set public URL
-    try {
-      if (process.env.GCS_BUCKET_NAME) {
-        const dest = `resumes/${req.user._id}/${req.file.filename}`;
-        fileUrl = await uploadFileToGCS(req.file.path, dest);
-        // remove local file after upload
-        fs.unlink(req.file.path, () => {});
-      }
-    } catch (err) {
-      console.error('GCS upload failed:', err.message);
-    }
+    const fileUrl = `/uploads/${req.file.filename}`;
 
     const resume = await Resume.create({
       userId: req.user._id,
