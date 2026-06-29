@@ -22,10 +22,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-app.get('/', (req, res) => {
-  res.json({ message: 'ResumeIQ API is running' });
-});
+app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/resumes', resumeRoutes);
@@ -38,6 +35,16 @@ try {
 } catch (err) {
   console.warn('Swagger not available:', err.message);
 }
+
+const frontendDistPath = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendDistPath));
+
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api/')) {
+    return next();
+  }
+  res.sendFile(path.join(frontendDistPath, 'index.html'));
+});
 
 // 404 handler
 app.use((req, res) => {
